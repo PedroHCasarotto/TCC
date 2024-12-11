@@ -1,0 +1,147 @@
+train set num:25658    valid set num:2872    test set num: 3291
+total parameters:117972
+################################################################################
+################################################################################
+TransGTM(
+  (tgt_embedding): Embeddings(
+    (lut): Embedding(52, 16)
+  )
+  (gene_embedding): Linear(in_features=71, out_features=16, bias=True)
+  (position): PositionalEncoding(
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (decoder): TransformerDecoder(
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+      (3): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+      (4): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+      (5): TransformerDecoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (multihead_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=16, out_features=16, bias=True)
+        )
+        (linear1): Linear(in_features=16, out_features=512, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=512, out_features=16, bias=True)
+        (norm1): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (norm3): LayerNorm((16,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+        (dropout3): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (generator): Generator(
+    (proj): Linear(in_features=16, out_features=52, bias=True)
+  )
+)
+Training start(FAME_dataset_one_hot_dim16_n6h8ff512_bh4_lr0.0001)
+Epoch:0 trn_loss:0.27932 lr_cur:0.00010 time elapsed 0.20 hrs (11.9 mins)
+Epoch:0 val_loss:0.00032 lr_cur:0.00010 time elapsed 0.20 hrs (11.9 mins)
+Model saved at epoch 0
+Epoch:1 trn_loss:0.00099 lr_cur:0.00010 time elapsed 0.39 hrs (23.6 mins)
+Epoch:1 val_loss:0.00003 lr_cur:0.00010 time elapsed 0.39 hrs (23.6 mins)
+Model saved at epoch 1
+Epoch:2 trn_loss:0.00008 lr_cur:0.00010 time elapsed 0.59 hrs (35.4 mins)
+Epoch:2 val_loss:0.00001 lr_cur:0.00010 time elapsed 0.59 hrs (35.4 mins)
+Model saved at epoch 2
+Epoch:3 trn_loss:0.00016 lr_cur:0.00010 time elapsed 0.79 hrs (47.5 mins)
+Epoch:3 val_loss:0.00001 lr_cur:0.00010 time elapsed 0.79 hrs (47.5 mins)
+Epoch:4 trn_loss:0.00003 lr_cur:0.00010 time elapsed 0.99 hrs (59.6 mins)
+Epoch:4 val_loss:0.00001 lr_cur:0.00010 time elapsed 0.99 hrs (59.6 mins)
+Epoch:5 trn_loss:0.00017 lr_cur:0.00010 time elapsed 1.20 hrs (71.7 mins)
+Epoch:5 val_loss:0.00002 lr_cur:0.00010 time elapsed 1.20 hrs (71.7 mins)
+Epoch:6 trn_loss:0.00006 lr_cur:0.00010 time elapsed 1.40 hrs (83.8 mins)
+Epoch:6 val_loss:0.00002 lr_cur:0.00010 time elapsed 1.40 hrs (83.8 mins)
+Epoch:7 trn_loss:0.00039 lr_cur:0.00010 time elapsed 5.38 hrs (322.9 mins)
+Epoch:7 val_loss:0.00002 lr_cur:0.00010 time elapsed 5.38 hrs (322.9 mins)
+Epoch:8 trn_loss:0.00017 lr_cur:0.00010 time elapsed 5.58 hrs (334.6 mins)
+Epoch:8 val_loss:0.00002 lr_cur:0.00010 time elapsed 5.58 hrs (334.6 mins)
+Epoch:9 trn_loss:0.00012 lr_cur:0.00007 time elapsed 5.77 hrs (346.2 mins)
+Epoch:9 val_loss:0.00001 lr_cur:0.00007 time elapsed 5.77 hrs (346.2 mins)
+Model saved at epoch 9
