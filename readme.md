@@ -26,12 +26,14 @@ O arquivo de `enviroment.yaml` apresenta os pacotes necessários para rodar o pr
    conda env create -f environment.yaml
    ```
 
-3. Ative o ambiente vistual:
+3. Ative o ambiente virtual:
    ```sh
    conda activate TransGEM
    ```
+4. Obtenha os dados:
+   Os datasets utilizados estão [disponíveis neste link](https://drive.google.com/drive/folders/1iNJ8dXJKPpoAQ5gFHMtXJL926_xyKEkr?usp=sharing).  Eles não puderam ser colocados diretamente no GitHub devido ao seu tamanho.
 
-3. Treine o modelo:
+5. Treine o modelo:
 
 No treinamento, os hiperparâmetros utilizados são:
 - `data_path`: onde os dados se encontram;
@@ -57,7 +59,7 @@ Segue o script de treinamento:
 
 - Os hiperparâmetos de gene_encoder, decimal_points, e epochs pode ser alterado a fim realizar diferentes experimentos.
 
-4. Teste o modelo:
+6. Teste o modelo:
 
 - Caso teste o modelo sem o GED:
 
