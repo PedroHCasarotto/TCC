@@ -214,3 +214,24 @@ def print_results_model_with_substance_analysis(df_original: pd.DataFrame, df_al
     print(f"{df_altered.groupby('substance')[col].mean().index[0]}: {df_altered.groupby('substance')[col].mean()[0]:.2f} +- {df_altered.groupby('substance')[col].std()[0]:.2f}%, mediana de {df_altered.groupby('substance')[col].median()[0]:.2f}")
     print(f"{df_altered.groupby('substance')[col].mean().index[1]}: {df_altered.groupby('substance')[col].mean()[1]:.2f} +- {df_altered.groupby('substance')[col].std()[1]:.2f}%, mediana de {df_altered.groupby('substance')[col].median()[1]:.2f}")
     print("\n")
+
+def format_metrics(df: pd.DataFrame, substance: str) -> Tuple[str, str, str]:
+    subset = df[df['substance'] == substance]
+    return (
+        f"unique: {subset['unique'].max():.2f}",
+        f"InDiv: {subset['div'].max():.2f}",
+        f"QED_medio: {subset['qed_mid'].max():.2f}"
+    )
+
+def print_maximum_value_to_each_substance(df_original: pd.DataFrame, df_altered: pd.DataFrame, embedding: str) -> None:
+    result_lines = [
+        f"Embedding: {embedding}\n",
+        "Dexametasona without GED:\n" + "\n".join(format_metrics(df_original, 'Dexametasona')),
+        "\nDexametasona with GED:\n" + "\n".join(format_metrics(df_altered, 'Dexametasona')),
+        "\n\nTestosterona without GED:\n" + "\n".join(format_metrics(df_original, 'Testosterona')),
+        "\n\nTestosterona with GED:\n" + "\n".join(format_metrics(df_altered, 'Testosterona')),
+        "\n\n------------------------------------------------\n"
+    ]
+
+    # Print results
+    print("\n".join(result_lines))
