@@ -9,51 +9,11 @@ O 'de novo' design possibilitou modelos de aprendizado de máquina a criarem com
 
 ## Estrutura do Projeto
 
-O artigo TranGEM original teve partes adaptadas. O arquivo `gene_ex_encoder_upgraded.py` teve sua estrutura adaptada a fim de comportar valores diferentes de casas decimais, adaptando cada um de seus embeddings. Os arquivos `Model.py` e `test.py` também foram adaptados para terem os valores de dimensões corretos.
+O artigo TranGEM original teve partes adaptadas. O arquivo `gene_ex_encoder_upgraded.py` teve sua estrutura adaptada a fim de comportar valores diferentes de casas decimais, adaptando cada um de seus embeddings -- sendo capaz de suportar qualquer valor de ponto decimal. Os arquivos `Model.py` e `test.py` também foram adaptados para terem os valores de dimensões corretos.
 
 Os arquivos de performance estão na pasta `out`, enquato os de resultados estão em `result`.
 
-
-========================================================================================================
-========================================================================================================
-========================================================================================================
-
-
-
-adaptado foi alterado para o seguinte:
-
-
-O repositório está organizado da seguinte forma:
-
-
-
-- **`Bases Tratadas/`**: Contém os conjuntos de dados utilizados para treinamentos e testes.
-- **`Artigos/`**: Documentação e arquivos relacionados ao TCC.
-- **`Resultados/`**: Relatórios e resultados gerados pelas implementações dos modelos.
-
-- OBS. - O github não aceita arquivos muitos grandes. Então, baixe as bases nos seguintes links e as coloque em pastas chamadas (Olist, M5 e Favorita):
-     - 'Olist' : https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
-     - 'M5' : https://www.kaggle.com/competitions/m5-forecasting-accuracy
-     - 'Favorita' : https://www.kaggle.com/competitions/favorita-grocery-sales-forecasting
-
-Se houver dúvidas confira os arquivos lidos no notebook `EDA.ipynb`
-
-## Modelos Abordados
-
-1. **ARIMA (Autoregressive Integrated Moving Average)**
-   - Modelo clássico de séries temporais, focado em dependências lineares.
-3. **Prophet**
-   - Modelo flexível desenvolvido pelo Facebook, ideal para séries com sazonalidades.
-4. **LSTM (Long Short-Term Memory)**
-   - Rede neural recorrente projetada para capturar padrões de longo prazo.
-5. **CNN (Convolutional Neural Network)**
-   - Redes neurais convolucionais aplicadas à previsão de séries temporais.
-
-## Tecnologias Utilizadas
-
-- Linguagem: Python
-- Bibliotecas: `pandas`, `numpy`, `statsmodels`, `scikit-learn`, `tensorflow`, `prophet`
-- Ferramentas: Jupyter Notebook, Git, Matplotlib, Seaborn
+O arquivo de `enviroment.yaml` apresenta os pacotes necessários para rodar o programa.
 
 ## Como Reproduzir os Resultados
 
@@ -61,15 +21,60 @@ Se houver dúvidas confira os arquivos lidos no notebook `EDA.ipynb`
    ```bash
    git clone [INSERIR REP]
    ```
-2. Instale os requisitos:
-   ```bash
-   pip install -r requirements.txt
+2. Crie um ambiente virtual:
+   ```sh
+   conda env create -f environment.yaml
    ```
-3. Execute os notebooks para reproduzir os resultados na seguinte ordem
 
-    1. EDA.ipynb  
-    2. Todos os modelos
-    3. Analise_resultados.ipynb
+3. Ative o ambiente vistual:
+   ```sh
+   conda activate TransGEM
+   ```
+
+3. Treine o modelo:
+
+No treinamento, os hiperparâmetros utilizados são:
+- `data_path`: onde os dados se encontram;
+- `dataset ([df_fame, df_fame_cl])`: o prefixo do nome do conjunto de dados;
+- `gene_encoder ([values, one_hot, binary, tenfold_binary])`: o embedding de expressão gênica utilizado;
+- `decimal_points`: o número de casas decimais a ser considerado;
+- `gene_e_length`: tamanho de pontos de expressão gênica de entrada (`978` com a base de dados original, `64` para a base de dados com aplicação do modelo GED);
+- `max_int`: valor de inteiro do ponto máximo dentro dos pontos de expressão gênica, usado para criar os embeddings (`10` para a base de dados original, `0` para a base de dados com aplicação do modelo GED);
+- `epochs`: número de épocas de treinamento.
+
+Segue o script de treinamento:
+
+- Caso treine o modelo sem o GED:
+
+   ```sh
+   python train.py --data_path ./data/ --dataset df_fame --gene_encoder value --gpu cuda:0 --decimal_points 6 --gene_e_length 978 --max_int 10 --epochs 200
+   ```
+
+- Caso treine o modelo com o GED:
+   ```sh
+   python train.py --data_path ./data/ --dataset df_fame_cl --gene_encoder value --gpu cuda:0 --decimal_points 6 --gene_e_length 64 --max_int 0 --epochs 200
+   ```
+
+- Os hiperparâmetos de gene_encoder, decimal_points, e epochs pode ser alterado a fim realizar diferentes experimentos.
+
+4. Teste o modelo:
+
+- Caso teste o modelo sem o GED:
+
+   ```sh
+   python test.py --data_path ./data/ --dataset df_fame --gene_encoder value --gpu cuda:0 --decimal_points 6 --gene_e_length 978 --max_int 10
+   ```
+
+- Caso teste o modelo com o GED:
+
+   ```sh
+   python test.py --data_path ./data/ --dataset df_fame_cl --gene_encoder value --gpu cuda:0 --decimal_points 6 --gene_e_length 64 --max_int 0
+   ```
+
+## Referências
+O código original do TransGEM pode ser encontrado no seguinte link: [código TransGEm](https://github.com/hzauzqy/TransGEM/tree/main)
+
+O código original do FAME pode ser encontrado no seguinte link: [código FAME](https://github.com/pth1993/FAME)
 
 ## Contribuições
 
@@ -81,4 +86,4 @@ Este projeto está licenciado sob a Licença MIT.
 
 ## Autor
 
-Este projeto foi desenvolvido por Brainer como parte dos requisitos para conclusão do curso de Engenharia de Computação na Universidade Federal de São Carlos.
+Este projeto foi desenvolvido por Pedro como parte dos requisitos para conclusão do curso de Engenharia de Computação na Universidade Federal de São Carlos.
